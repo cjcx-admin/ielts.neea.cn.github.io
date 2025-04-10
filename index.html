@@ -340,7 +340,12 @@
         });
         $("#newsList").load("news?more=-1&locale=zh_CN");
         $('.carousel').carousel();
+        
     });
+    function logout () {
+        localStorage.setItem("isLogin", false);
+        location.href = "./login.html"
+    }
 </script>
 </body>
 </html>

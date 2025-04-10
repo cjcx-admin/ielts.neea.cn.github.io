@@ -461,6 +461,10 @@
             changePage('#!/showOrders',true);
         }
     }
+    function logout () {
+        localStorage.setItem("isLogin", false);
+        location.href = "../../login.html"
+    }
 </script>
 </body>
 </html>

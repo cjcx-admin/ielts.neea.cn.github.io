@@ -180,6 +180,10 @@
             loadWidgetPage("#header", "../../header.html?locale=zh_CN", false);
             loadWidgetPage("#footer", "../../footer.html?locale=zh_CN", true);
         });
+        function logout () {
+        localStorage.setItem("isLogin", false);
+        location.href = "../../login.html"
+    }
     </script>
 </body>
 
