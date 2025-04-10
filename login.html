@@ -65,7 +65,7 @@
             </div>
             <div class="span5" align="left" style="padding:1em;">
                 <h3>用户登录</h3>
-                <form id="loginForm" name="loginForm" action="/login" method="post"><div id="msgBox"
+                <form id="loginForm" name="loginForm" action="#" method="post"><div id="msgBox"
                          style="display: none; color: #cc6666; margin: .5em -1em .5em 0em;"></div>
                     <label><span
                             style="margin-bottom: .2em; color: #a5a5a5; font-size: 13px;">NEEA User ID/注册邮箱/手机号</span></label>
@@ -88,7 +88,7 @@
 
                     <div class="u-finpass"
                          style="margin-top: .5em; margin-bottom: 10px;" align="left">
-                        <button id="btn_log_goto" class="btn btn-danger" type="button"
+                        <button id="btn_log_goto" class="btn btn-danger" type="button" 
                                 style="width: 8em; height: 2.5em; font-weight: bolder; margin-bottom: .5em;">登录
                         </button>
                         <a href="https://ielts.neea.cn/resetPassword/homepage"> 忘记NEEA ID和密码？</a>
@@ -164,7 +164,7 @@
 
         history.forward();
         $("#btn_cp_goto").click(function () {
-            location.href = "/profile/homepage.html"
+            location.href = "./profile/homepage.html"
         });
         $("#btn_log_goto").click(function () {
             if (validateLoginForm()) {
@@ -173,7 +173,7 @@
                 $('#userPwd').val($.md5(passwd));
                 var frmAction = "/login";
                 $('#loginForm').attr("action", frmAction);
-                $('#loginForm').submit();
+                location.href = "./myHome/53013703/index.html"
                 return false;
             }
         });
