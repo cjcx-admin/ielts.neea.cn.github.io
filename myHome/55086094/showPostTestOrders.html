@@ -93,7 +93,7 @@
                             </tr>
                             <tr>
                                 <td style="background-color: #f8f8f8; font-weight: bolder; text-align: right;">注册号(用于雅思报名注册过程)</td>
-                                <td style="color: #555;">21280024</td>
+                                <td style="color: #555;">23580026</td>
                             </tr>
                             <tr>
                                 <td style="background-color: #f8f8f8; font-weight: bolder; text-align: right;">考号</td>
@@ -198,12 +198,12 @@
 
                                         原始成绩单寄送地址可在笔试日当天24:00前点此按钮修改；<br /> 成绩复议结果寄送地址可在提交申请后3周内点击此按钮修改。
                                     </div>
-                                    <br/><input type="button" id="btnEdtAddr21280024" class="btn" value="修改成绩单寄送地址" disabled="disabled" />
+                                    <br/><input type="button" id="btnEdtAddr23580026" class="btn" value="修改成绩单寄送地址" disabled="disabled" />
                                 </td>
                             </tr>
                             <tr>
                                 <td style="text-align: right;" colspan="2">
-                                    <input type="button" value="查看报名表" onclick="loadAppPage('showPostTestRegForm','21280024')" class="btn btn-primary" />
+                                    <input type="button" value="查看报名表" onclick="loadAppPage('showPostTestRegForm','23580026')" class="btn btn-primary" />
                                 </td>
                             </tr>
                         </tbody>
@@ -211,12 +211,12 @@
                 </div>
                 <script type="text/javascript">
                     $(function() {
-                        $("#btnRescore21280024").click(
+                        $("#btnRescore23580026").click(
                             function() {
                                 $.ajax({
                                     url: "eorCreate",
                                     data: {
-                                        "neeaAppId": '21280024'
+                                        "neeaAppId": '23580026'
                                     },
                                     success: function(msg) {
                                         $("#main-content").html(msg);
