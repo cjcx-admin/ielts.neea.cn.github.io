@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="_csrf" content="9228345e-e482-44b2-8e72-4f8ddee66a1c"/>
+    <title>雅思网上报名 - 教育部教育考试院</title>
+    <!-- Google Tag Manager -->
+<script>
+    dataLayer = [];
+</script>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5DC5JZ');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DC5JZ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="container">
+    <div class="main-content-style">
+        <fieldset><legend><h2>额外成绩单寄送</h2></legend></fieldset>
+        <div style="margin-top: 2em;">
+            <h4>考试信息</h4>
+            <div class="alert alert-error">成绩公布后，且成绩在有效期内(雅思考试成绩有效期为考试日期后2年), 考生可登录网站申请额外成绩单寄送服务。如果您的考试已用于申请成绩复议，在成绩复议过程中则无法申请额外成绩单寄送服务；只有当成绩复议结束后，您才可以申请额外成绩单寄送和成绩单补寄。</div>
+                <table class="table table-bordered table-striped table-td-align-center">
+                    <tr>
+                        <td width="15%" style="vertical-align:middle;text-align:center;font-weight: bolder;">考试</td>
+                        <td width="20%" style="vertical-align:middle;text-align:center;font-weight: bolder;">考试日期</td>
+                        <td width="10%" style="vertical-align:middle;text-align:center;font-weight: bolder;">考号</td>
+                        <td width="30%" style="vertical-align:middle;text-align:center;font-weight: bolder;">考点中心</td>
+                        <td width="25%" style="vertical-align:middle;text-align:center;font-weight: bolder;">操作</td>
+                    </tr>
+                    <tr>
+                            <td style="vertical-align:middle;text-align:center">
+                                雅思考试<br/><a href="javascript:showScore('6.0', '6.5', '5.5', '5.5', '6.0');"style="font-weight: bolder">查看成绩</a>
+                            </td>
+                            <td style="vertical-align:middle;text-align:center">2024年12月28日 星期六<strong>&nbsp;&nbsp;下午场</strong>
+                                    </td>
+                            <td style="vertical-align:middle;text-align:center">595446</td>
+                            <td style="vertical-align:middle;text-align:center">湖南开放大学雅思纸笔考点</td>
+                            <td style="vertical-align:middle;text-align:center">
+                                <button type="button" id="btnExtraTRFApp21300143"  class="btn btn-danger"
+                                            onclick="createExtraTRF('21300143','595446','false');" >申请额外成绩单寄送</button>
+                                    <br/><br/><input type="button" id="btnDuplicateSendTRF21300143"
+                                                         value="申请成绩单补寄" class="btn btn-primary" style="width:150px;"
+                                                         onclick="duplicateSendTRF('21300143','595446','false');" />
+                                    </td>
+                        </tr>
+                    </table>
+            </div>
+        <div style="margin-top: 2em;">
+                <h4>待确认申请</h4>
+                
+                    暂无数据
+                </div>
+            <div style="margin-top: 2em;">
+                <h4>已确认申请</h4>
+                
+                    暂无数据
+                </div>
+        <input type="hidden" name="balance" id="balance" value="0" />
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("html,body").animate({
+            scrollTop : 0
+        }, 500);
+        showTipMsg();
+
+        getCountryUniversity();
+        formatCurrency('showBalance', '0');
+
+        $("#extr-pay-dialog-succ").click(function() {
+            changePage('#!/extraTRFShow',true);
+        });
+    });
+
+    function createExtraTRF(neeaAppId,extAppId,scoreExpiresLess10Days) {
+        if(extAppId == ''){
+            showMsgError("提示信息","确定","这场考试还没有考号，暂时不能申请额外成绩单");
+            return;
+        }
+        if(scoreExpiresLess10Days=="true"){
+            showMsgAsk("提示信息","确定","请注意，距您成绩失效日已不足10个自然日，由于额外成绩单的处理周期为申请成功后的3个工作日内,受公共假期和周末的影响，您的申请可能无法被处理，请您随时关注个人页面中的处理进度, 以网站显示的处理结果为准。",function () {
+                $.ajax({
+                    url : "extraTRFCreate",
+                    cache : false,
+                    type : "GET",
+                    data : {
+                        "neeaAppId" : neeaAppId
+                    },
+                    success : function(msg) {
+                        $("#main-content").html(msg);
+                    }
+                });
+            });
+        }else{
+            $.ajax({
+                url : "extraTRFCreate",
+                cache : false,
+                type : "GET",
+                data : {
+                    "neeaAppId" : neeaAppId
+                },
+                success : function(msg) {
+                    $("#main-content").html(msg);
+                }
+            });
+        }
+    }
+
+    function duplicateSendTRF(neeaAppId,extAppId,scoreExpiresLess10Days) {
+        if(extAppId == ''){
+            showMsgError("提示信息","确定","这场考试还没有考号，暂时不能申请成绩单补寄");
+            return;
+        }
+
+        if(scoreExpiresLess10Days=="true"){
+            showMsgAsk("提示信息","确定","请注意，距您成绩失效日已不足10个自然日，由于额外成绩单的处理周期为申请成功后的3个工作日内,受公共假期和周末的影响，您的申请可能无法被处理，请您随时关注个人页面中的处理进度, 以网站显示的处理结果为准。",function () {
+                $.ajax({
+                    url : "duplicateSendTRFCreate",
+                    cache : false,
+                    type : "GET",
+                    data : {
+                        "neeaAppId" : neeaAppId
+                    },
+                    success : function(msg) {
+                        $("#main-content").html(msg);
+                    }
+                });
+            });
+        }else{
+            $.ajax({
+                url : "duplicateSendTRFCreate",
+                cache : false,
+                type : "GET",
+                data : {
+                    "neeaAppId" : neeaAppId
+                },
+                success : function(msg) {
+                    $("#main-content").html(msg);
+                }
+            });
+        }
+    }
+
+    function computePayFee(checkboxId, createBeforeRiseEffective, riseEffective) {
+        if(createBeforeRiseEffective=="true" && riseEffective=="true"){
+            alertDialog();
+            $("#" + checkboxId).attr("checked",false);
+        }else{
+            var total = 0;
+            $("[name='payExtraTrf']:checked").each(function() {
+                total += parseInt($(this).val().split(",")[0]);
+            });
+            formatCurrency('needPayTotalFee', total);
+        }
+    }
+
+    function getCountryUniversity() {
+        $.ajaxSettings.async = false;
+        $.getJSON("extraTRFCountryUniversity.json", function(data) {
+            universityCountryObj = jQuery.parseJSON(data);
+            $.each(universityCountryObj, function(i, country) {
+                var option = $("<option></option>");
+                $(option).attr("value", country.countryCode);
+                $(option).text(country.countryNameCn);
+                $("#countryCode").append(option);
+            });
+        });
+        $.ajaxSettings.async = true;
+    }
+
+    function getInst(countrySelVal, instSelVal) {
+        $.each(universityCountryObj, function(i, data) {
+            if (data.countryCode == countrySelVal) {
+                $("#inst").empty();
+                var option = $("<option></option>");
+                $(option).attr("value", "-1");
+                $(option).text("-- 请选择 --");
+                $("#inst").append(option);
+                $.each(data.university, function(j, subData) {
+                    if(subData.status==1){
+                        option = $("<option></option>");
+                        $(option).attr("value", subData.universityId);
+                        $(option).text(subData.universityName);
+                        $("#inst").append(option);
+                    }
+                });
+                $("#inst").append(option);
+            }
+        });
+    }
+
+    function closeDept(){
+        $("#deptList").empty();
+        $("#deptList").hide();
+        $("#btnClose").hide();
+    }
+
+    function searchDept(){
+        if ($("#countryCode").val() == "-1") {
+            showMsgError("提示信息","确定","请选择国家/地区", function () {
+                $("#countryCode").focus();
+            });
+            return false;
+        }
+        if ($("#inst").val() == "-1") {
+            showMsgError("提示信息","确定","请选择院校/机构", function () {
+                $("#inst").focus();
+            });
+            return false;
+        }
+        $.ajax({
+            url : "findElectronicInstitutions.json",
+            type : "get",
+            data : {
+                universityId : $("#inst").val()
+            },
+            dataType : "json",
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                showMsgError('提示信息','确定','查询失败')
+            },
+            success : function(data) {
+                $("#deptList").empty();
+                $("#btnClose").hide();
+                if (data.length == 0) {
+                    showMsgError("提示信息","确定","没有查询到信息", function () {
+                        $("#btnQueryDept").focus();
+                    });
+                    return false;
+                } else {
+                    var list = data;
+                    var table = $("<table width='100%' align='center' cellpadding='3' cellspacing='1' style='margin-top:0.5em;' class='table table-bordered table-striped table-td-align-center' >");
+                    var title = $("<thead><tr>"
+                        + "<td align=\"center\" width=\"60\">部门/人</td>"
+                        + "<td align=\"center\" width=\"50\">电子成绩</td>"
+                        + "<td align=\"center\" width=\"60\">城市</td>"
+                        + "<td align=\"center\" width=\"50\">邮编</td>"
+                        + "<td align=\"center\" width=\"200\">地址</td>"
+                        + "</tr></thead>");
+                    title.appendTo(table);
+                    table.append($("<tbody>"));
+                    var show = "";
+                    $.each(list, function(i, n) {
+                        if(list[i].onlyElectronic==1){
+                            show = "接受";
+                        }else{
+                            show = "不接受";
+                        }
+
+                        var tr = $("<tr>"
+                            + "<td bgcolor=\"#FFFFFF\" align=\"center\">"
+                            + (list[i].department==null?"":list[i].department)
+                            + "</td>"
+                            + "<td bgcolor=\"#FFFFFF\" align=\"center\">"
+                            + show
+                            + "</td>"
+                            + "<td bgcolor=\"#FFFFFF\" align=\"center\">"
+                            + (list[i].city==null?"":list[i].city)
+                            + "</td>"
+                            + "<td bgcolor=\"#FFFFFF\" align=\"center\">"
+                            + (list[i].zip==null?"":list[i].zip)
+                            + "</td>"
+                            + "<td bgcolor=\"#FFFFFF\" align=\"center\">"
+                            + (list[i].address==null?"":list[i].address)
+                            + "</td>"
+                            + "</tr>");
+                        tr.appendTo(table);
+                    });
+                    table.append($("</tbody>"));
+                    $("#deptList").append(table);
+                    $("#btnClose").show();
+                }
+            }
+        });
+        $("#deptList").show();
+    }
+
+    function alertDialog(){
+        showMsgWarn("提示信息", "确定", "2018年4月1日起实行额外成绩单新政策， 请您删除此申请后重新填写。");
+    }
+
+    function showScore(scoreListening, scoreReading, scoreWriting, scoreSpeaking, scoreTotal){
+        var table = '<table class="table table-bordered"><thead><tr><td style="text-align: center;">听力</td><td style="text-align: center;">阅读</td><td style="text-align: center;">写作</td><td style="text-align: center;">口语</td><td style="text-align: center;">总成绩</td></tr></thead>'+
+            '<tbody><tr><td style="text-align: center;">'+scoreListening+'</td><td style="text-align: center;">'+scoreReading+'</td><td style="text-align: center;">'+scoreWriting+'</td><td style="text-align: center;">'+scoreSpeaking+'</td><td style="text-align: center;">'+scoreTotal+'</td></tr></tbody></table>';
+        layer.open({
+            title: "成绩",
+            btn: ["确定"],
+            closeBtn: 0,
+            content: table,
+            area: ['500px', '200x'],
+            btn1: function () {
+                layer.closeAll();
+            }
+        });
+    }
+</script>
+</body>
+</html>
