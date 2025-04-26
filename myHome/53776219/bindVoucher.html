@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="_csrf" content="9228345e-e482-44b2-8e72-4f8ddee66a1c"/>
+	<title>雅思网上报名 - 教育部教育考试院</title>
+	<!-- Google Tag Manager -->
+<script>
+    dataLayer = [];
+</script>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5DC5JZ');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DC5JZ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="container">
+<div class="main-content-style">
+	<fieldset>
+		<legend><h2>绑定代金券</h2></legend>
+	</fieldset>
+	<div id="bindVoucherSection" class="form-horizontal">
+		<form id="voucherForm" class="form-horizontal" action="/myHome/53776219/bindVoucher" method="post"><div class="alert alert-block">
+				如果您已获得代金券号码，请在下方输入并点击绑定，系统会将该代金券绑定给您，即可在注册考试时使用。
+			</div>
+			<div class="control-group">
+				<label class="control-label">输入代金券号码</label>
+				<div class="controls contr_c">
+					<input id="voucherNo" name="voucherNo" title="请输入代金券号码" style="ime-mode:disabled;margin-right:1em;" class="inputStyle" type="text" value="" maxlength="32"/><input type="submit" id="btn_bind" value="绑定" class="btn btn-primary"/>
+					<div class="errtext">
+						<span id="voucherNoErrorMsg" class="showElementError"></span>
+					</div>
+				</div>
+			</div>
+			<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form></div>
+</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		$("html,body").animate({
+			scrollTop : 0
+		}, 500);
+
+		showTipMsg();
+
+		var voucherFormValidateOptions = {
+			rules : {
+				voucherNo : {
+					required : true,
+					isSBCcase : true
+				}
+			},
+			messages : {
+				voucherNo : {
+					required : "请输入代金券号码",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式"
+				}
+			},
+			errorPlacement : function(error, element) {
+				appendErrorMsg(element.attr("id"), error.text());
+			},
+			success : function(error) {
+				$("#" + error.attr("for") + "ErrorMsg").empty();
+			},
+			submitHandler : function(form) {
+				showMsgAsk("提示信息", "cn", "您确定绑定这个代金券吗？",
+					function () {
+						bindVoucher();
+					});
+			}
+		};
+		$("#voucherForm").validate(voucherFormValidateOptions);
+
+		function bindVoucher() {
+			$.ajax({
+				url : 'bindVoucher',
+				data : $("#voucherForm").serialize(),
+				type : 'POST',
+				headers: {
+					'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+				},
+				success : function(data) {
+					$("#main-content").html(data);
+				}
+			});
+		}
+	});
+</script>
+</body>
+</html>
