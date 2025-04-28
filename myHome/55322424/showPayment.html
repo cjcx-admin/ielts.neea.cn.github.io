@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<div id="main-content">
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>雅思网上报名 - 教育部教育考试院</title>
+	<!-- Google Tag Manager -->
+<script>
+    dataLayer = [];
+</script>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5DC5JZ');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DC5JZ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+<div class="container">
+<div class="main-content-style">
+		<fieldset>
+			<legend><h2>账户充值</h2></legend>
+		</fieldset>
+		<div id="paymentSection">
+			<div class="alert alert-block">
+				<p style="text-indent: 2em; font-family: microsoft yahei">
+					雅思报名系统采用预付费方式缴纳考试费，请先预存考试费至您的“账户余额”中。
+				</p>
+				<p style="text-indent: 2em; font-family: microsoft yahei">
+					关于“重寄成绩单”和“额外成绩单”等考后服务费用您可先行申请，提交后系统会自动为您生成链接，您点击链接支付即可。
+				</p>
+			</div>
+			<div id="msgBox" style="margin-left: 0em; margin-bottom: .5em; font-size: 13px; color: #cc0000; display: none;"></div>
+			<div style="font-weight: bolder; margin-bottom: 1em;">请选择您要充值的费用种类，进行账户充值：</div>
+			<input type="hidden" name="balance" id="balance" value="0">
+			<input type="hidden" name="difference" id="difference" value="0">
+			<input type="hidden" name="newOrderPrice" id="newOrderPrice" value="217000">
+			<input type="hidden" name="newOrderPriceIELTSUKVI" id="newOrderPriceIELTSUKVI" value="222000">
+			<input type="hidden" name="newOrderPriceIELTSLS" id="newOrderPriceIELTSLS" value="125000">
+			<input type="hidden" name="rescheduleOrderPrice" id="rescheduleOrderPrice" value="42000">
+			<input type="hidden" name="eorFeePrice" id="eorFeePrice" value="140000">
+			<input type="hidden" name="lseorFeePrice" id="lseorFeePrice" value="100000">
+			<input type="hidden" name="rtiFeePrice" id="rtiFeePrice" value="40000">
+			<form id="paymentForm" class="form-horizontal" action="pay" method="post" target="_blank"><input type="hidden" name="hiddenAmount" id="hiddenAmount" value="">
+				<input type="hidden" name="bmfcount" id="bmfcount" value="0">
+				<input type="hidden" name="bmfcountIELTSUKVI" id="bmfcountIELTSUKVI" value="0">
+				<input type="hidden" name="bmfcountIELTSLS" id="bmfcountIELTSLS" value="0">
+				<input type="hidden" name="zkfcount" id="zkfcount" value="0">
+				<input type="hidden" name="fyfcount" id="fyfcount" value="0">
+				<input type="hidden" name="lsfyfcount" id="lsfyfcount" value="0">
+				<input type="hidden" name="rticount" id="rticount" value="0">
+				<input type="hidden" name="cefchoose" id="cefchoose" value="0">
+			<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c">
+</div></form><table class="table table-bordered table-hover textfamily" style="line-height: 1em;">
+				<thead>
+					<tr>
+						<th style="text-align: center;"></th>
+						<th style="text-align: center;width:35%; white-space: nowrap;">款项类别</th>
+						<th style="text-align: center;">单价(人民币元)</th>
+						<th style="text-align: center;">数量</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input name="paymentType" id="bmf" type="checkbox" value="newOrder" onclick="computeMoney()"></td>
+						<td style="color: #333; text-align: center; vertical-align: middle;"><label for="bmf">雅思考试费</label></td>
+						<td style="color: #ff4200; text-align: center; vertical-align: middle;"><label for="bmf"> <span id="newOrderFeeField">￥2,170.00</span>
+						</label></td>
+						<td style="text-align: center; vertical-align: middle;"><select name="bmfSelect" id="bmfSelect" onchange="computeMoney()" style="border: 1px solid #bbb; width: 50px;">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input name="paymentType" id="bmfIELTSUKVI" type="checkbox" value="newOrderIELTSUKVI" onclick="computeMoney()"></td>
+						<td style="color: #333; text-align: center; vertical-align: middle;"><label for="bmfIELTSUKVI">用于英国签证及移民的雅思考试费</label></td>
+						<td style="color: #ff4200; text-align: center; vertical-align: middle;"><label for="bmfIELTSUKVI"> <span id="newOrderFeeFieldIELTSUKVI">￥2,220.00</span>
+						</label></td>
+						<td style="text-align: center; vertical-align: middle;"><select name="bmfSelectIELTSUKVI" id="bmfSelectIELTSUKVI" onchange="computeMoney()" style="border: 1px solid #bbb; width: 50px;">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input name="paymentType" id="bmfIELTSLS" type="checkbox" value="newOrderIELTSLS" onclick="computeMoney()"></td>
+						<td style="color: #333; text-align: center; vertical-align: middle;"><label for="bmfIELTSLS">用于英国签证及移民的雅思生活技能类考试费</label></td>
+						<td style="color: #ff4200; text-align: center; vertical-align: middle;"><label for="bmfIELTSLS"> <span id="newOrderFeeFieldIELTSLS">￥1,250.00</span>
+						</label></td>
+						<td style="text-align: center; vertical-align: middle;"><select name="bmfSelectIELTSLS" id="bmfSelectIELTSLS" onchange="computeMoney()" style="border: 1px solid #bbb; width: 50px;">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input name="paymentType" id="zkf" type="checkbox" value="rescheduleOrder" onclick="computeMoney()"></td>
+						<td style="color: #333; text-align: center; vertical-align: middle;"><label for="zkf">转考费</label></td>
+						<td style="color: #ff4200; text-align: center; vertical-align: middle;"><label for="zkf"> <span id="rescheduleOrderFeeField">￥420.00</span>
+						</label></td>
+						<td style="text-align: center; vertical-align: middle;"><select name="zkfSelect" id="zkfSelect" onchange="computeMoney()" style="width: 50px;">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input name="paymentType" id="fyf" type="checkbox" value="eorOrder" onclick="computeMoney()"></td>
+						<td style="color: #333; text-align: center; vertical-align: middle;"><label for="fyf">雅思成绩复议费</label></td>
+						<td style="color: #ff4200; text-align: center; vertical-align: middle;"><label for="fyf"> <span id="eorFeeField">￥1,400.00</span>
+						</label></td>
+						<td style="text-align: center; vertical-align: middle;"><select name="fyfSelect" id="fyfSelect" onchange="computeMoney()" style="width: 50px;">
+								<option value="1">1</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input name="paymentType" id="lsfyf" type="checkbox" value="lseorOrder" onclick="computeMoney()"></td>
+						<td style="color: #333; text-align: center; vertical-align: middle;"><label for="lsfyf">用于英国签证及移民的雅思生活技能类考试成绩复议费</label></td>
+						<td style="color: #ff4200; text-align: center; vertical-align: middle;"><label for="lsfyf"> <span id="lseorFeeField">￥1,000.00</span>
+						</label></td>
+						<td style="text-align: center; vertical-align: middle;"><select name="lsfyfSelect" id="lsfyfSelect" onchange="computeMoney()" style="width: 50px;">
+								<option value="1">1</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="text-align: center; vertical-align: middle;"><input name="cef" id="cef" type="checkbox" value="differencePrice" onclick="computeMoney()"></td>
+						<td style="color: #333; text-align: center; vertical-align: middle;"><label for="cef">考费差额</label>
+							<p>（如您的账户余额不足以支付相关服务，可根据下拉菜单选择所需服务补足差额。）</p> <select name="cefSelect" id="cefSelect" onchange="getDifference();" style="width:85%">
+								<option value="0">请选择</option>
+								<option value="217000">雅思考试费</option>
+								<option value="222000">用于英国签证及移民的雅思考试费</option>
+								<option value="125000">用于英国签证及移民的雅思生活技能类考试费</option>
+								<option value="42000">转考费</option>
+								<option value="140000">雅思成绩复议费</option>
+								<option value="100000">用于英国签证及移民的雅思生活技能类考试成绩复议费</option>
+						</select></td>
+						<td style="color: #ff4200; text-align: center; vertical-align: middle;"><label for="cef" id="cdfVal">¥0.00</label></td>
+						<td style="text-align: center; vertical-align: middle;">1</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4" style="color: #333;"><strong>待支付总金额：</strong><span id="total" style="color: red">¥0.00</span><span style="float: right">您当前账户余额： <span id="balanceField1">￥0.00</span>
+						</span></td>
+					</tr>
+				</tfoot>
+			</table>
+			<fieldset>
+				<div align="center" style="margin-top: 2em;margin-bottom: 3em;">
+					<button id="btnPay" class="btn btn-primary">支付</button>
+					<input type="button" class="btn" value="返回" onclick="changePage('#!/homepage',true);" style="margin-left: 1em;">
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		$("html,body").animate({
+			scrollTop : 0
+		}, 500);
+
+		$("#btnPay").click(function() {
+			pay('充值确认');
+		});
+
+		formatCurrency('newOrderFeeField', '217000');
+		formatCurrency('newOrderFeeFieldIELTSUKVI', '222000');
+		formatCurrency('newOrderFeeFieldIELTSLS', '125000');
+		formatCurrency('rescheduleOrderFeeField', '42000');
+		formatCurrency('eorFeeField', '140000');
+		formatCurrency('lseorFeeField', '100000');
+		formatCurrency('rtiFeeField', '40000');
+		formatCurrency('balanceField1', '0');
+	});
+</script>
+<script>
+	dataLayer.push({
+		'virtualPage' : '/virtual/myHome/55322424/accountRecharge',
+		'event' : 'setVirtual'
+	});
+</script>
+
+</div>
+</body>
+</html>
