@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="_csrf" content="9228345e-e482-44b2-8e72-4f8ddee66a1c"/>
+	<title>雅思网上报名 - 教育部教育考试院</title>
+</head>
+<body>
+<div class="container">
+	<div class="main-content-style">
+		<fieldset>
+			<legend><h2>安全信息</h2></legend>
+		</fieldset>
+		<div id="securityInfo">
+			<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a href="#updateMobileSection" data-toggle="tab" onfocus="this.blur()">更改手机号码</a></li>
+				<li><a href="#updateEmailSection" data-toggle="tab" onfocus="this.blur()">更改电子邮箱</a></li>
+				<li><a href="#updatePasswordSection" data-toggle="tab" onfocus="this.blur()">更改密码</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="updateMobileSection">
+					<form id="frmEmailVerifyCodeForUpdateMobile" action="/myHome/55322759/showSecurityInfo" method="post"><input type="hidden" name="_ajax" value="true" >
+						<input type="hidden" name="neeaId" value="55322759" >
+						<input type="hidden" name="emailType" value="61F4C729026D4BC7A67EA11D617BF5C5">
+					<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form><form id="frmCheckEmailVerifyCodeForUpdateMobile" action="/myHome/55322759/showSecurityInfo" method="post"><input type="hidden" name="_ajax" value="true" >
+						<input type="hidden" name="neeaId" value="55322759" >
+						<input type="hidden" name="emailType" value="61F4C729026D4BC7A67EA11D617BF5C5">
+						<input type="hidden" name="emailVerifyCode" id="emailVerifyCode_check">
+					<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form><form id="frmMobileVerifyCodeForUpdateMobile" action="/myHome/55322759/showSecurityInfo" method="post"><input type="hidden" name="_ajax" value="true" >
+						<input type="hidden" name="neeaId" value="55322759" >
+						<input type="hidden" name="mobileType" value="780D8D93F5824B00BA2BFA1E66F34BF9">
+						<input type="hidden" name="emailVerifyCode" id="emailVerifyCode_v">
+						<input type="hidden" name="newMobile" id="newMobile_v">
+						<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form><form id="frmValidateEmail" action="/myHome/55322759/showSecurityInfo" method="post"><input type="hidden" id="validateType" name="validateType" value="validateEmailByProfile" />
+					<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form><div id="returnMsg" class="alert alert-error" style="display:none;"></div>
+					<div>
+						<input type="hidden" name="plainMobile" id="plainMobile" value="18054035947" >
+						<form id="mobileForm" class="form-horizontal" action="/myHome/55322759/showSecurityInfo" method="post"><input id="neeaId" name="neeaId" type="hidden" value="55322759"/><input id="confuseMobile" name="confuseMobile" type="hidden" value="130****5599"/><input id="confuseEmailAddress" name="confuseEmailAddress" type="hidden" value="3********2@qq.com"/><input id="emailStatus" name="emailStatus" type="hidden" value="1"/><div id="emailVerifyCodeDiv">
+								<div class="control-group">
+									<div id="returnMsgForEmailVerifyCode" class="alert alert-info" style="display:none;"></div>
+									<label class="control-label">当前电子邮箱 </label>
+									<div class="controls contr_c">
+										<div>3********2@qq.com
+											&nbsp;&nbsp;<input type="button" id="btnGetEmailVerifyCode" class="btn btn-primary" value="获取邮件验证码"/>
+										</div>
+										<br/>如注册邮箱/手机号码有误或无法使用，请您点击 <a href="javascript:void(0);" onclick="showOnlineService('','Profile_UpdateMobileEmail','showSecurityInfo');">这里</a> 在线提交重置邮箱/手机号码申请或查看申请状态。
+										<script type="text/javascript">
+											$(function(){
+												$("#btnGetEmailVerifyCode").click(function () {
+													if('' == '修改手机号码错误次数过多，请不要再次操作'){
+														return false;
+													}
+													$("#returnMsg").hide();
+													$("#returnMsg").text("");
+													$("#emailVerifyCode").val("");
+													var selfObj = this;
+													$.ajax({
+														type : 'POST',
+														headers: {
+															'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+														},
+														dataType : 'json',
+														url : "../../sendEmailVerifyCodeForUpdateMobile",
+														data : $("#frmEmailVerifyCodeForUpdateMobile").serialize(),
+														success : function(data) {
+															$("#returnMsgForEmailVerifyCode").text(data[0]);
+															if(data[0] == "系统已经向您的当前电子邮箱发送验证码，请查收"){
+																$("#returnMsgForEmailVerifyCode").attr("class", "alert alert-info");
+															}else{
+																$("#returnMsgForEmailVerifyCode").attr("class", "alert alert-error");
+															}
+															setTimeCountdown(selfObj, $("#btnGetEmailVerifyCode").val(), "秒后重新发送", 60);
+															$("#returnMsgForEmailVerifyCode").show();
+														}
+													});
+												});
+
+												$("#btnValidationEmail").click(
+													function() {
+														$("#btnValidationEmail").attr("disabled", true);
+														sendValidationEmail('cn','55322759');
+													});
+											});
+										</script>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">邮件验证码 </label>
+									<div class="controls contr_c">
+										<input id="emailVerifyCode" name="emailVerifyCode" style="ime-mode:disabled" class="inputStyle" type="text" value="" maxlength="4"/><span class="errtext">
+											<span id="emailVerifyCodeErrorMsg" class="showElementError" style="padding-left: 10px;"></span>
+										</span>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="controls">
+										<input type="button" id="btnNext" class="btn btn-primary" value="下一步"/>
+										<input type="button" value="返回" onclick="javascript:changePage('#!/homepage',true);" class="btn" style="margin-left: 1em;"/>
+										<script type="text/javascript">
+											$(function () {
+												$("#btnNext").click(function() {
+													if('' == '修改手机号码错误次数过多，请不要再次操作'){
+														return false;
+													}
+													$("#emailVerifyCodeErrorMsg").text("");
+													if(!checkEmailVerifyCodeValid($("#emailVerifyCode").val())){
+														$("#emailVerifyCodeErrorMsg").text("请填写正确的邮件验证码");
+														return false;
+													}
+													$("#returnMsgForEmailVerifyCode").hide("");
+													$("#returnMsgForEmailVerifyCode").text("");
+													$("#emailVerifyCode_check").val($("#emailVerifyCode").val());
+													$("#btnNext").attr('disabled', true);
+													$.ajax({
+														type : 'POST',
+														headers: {
+															'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+														},
+														dataType : 'json',
+														url : "checkEmailVerifyCodeForUpdateMobile",
+														data: $("#frmCheckEmailVerifyCodeForUpdateMobile").serialize(),
+														success: function (data) {
+															if (data.status == true) {
+																$("#returnMsg").hide();
+																$("#returnMsg").text("");
+																$("#emailVerifyCodeDiv").hide();
+																$("#restDiv").show();
+															}else{
+																$("#returnMsg").text(data.errorMessage);
+																$("#returnMsg").show();
+																$("#btnNext").attr('disabled', false);
+															}
+														}
+													});
+												});
+											});
+										</script>
+									</div>
+								</div>
+							</div>
+							<div id="restDiv" style="display:none;">
+								<div class="control-group">
+									<div id="returnMsgForMobileVerifyCode" class="alert alert-info" style="display:none;"></div>
+									<label class="control-label">当前手机号码</label>
+									<div class="controls contr_c">
+										<div>
+											130****5599</div>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">新手机号码</label>
+									<div class="controls contr_c">
+										<input id="newMobile" name="newMobile" style="ime-mode:disabled" class="inputStyle" type="text" value="" maxlength="11"/><span class="errtext">
+											<span id="newMobileErrorMsg" class="showElementError" style="padding-left: 10px;"></span>
+										</span>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">短信验证码</label>
+									<div class="controls contr_c">
+										<input id="mobileVerifyCode" name="mobileVerifyCode" style="ime-mode:disabled" class="inputStyle" type="text" value="" maxlength="6"/>&nbsp;&nbsp;
+										<input type="button" id="btnGetMobileVerifyCode" class="btn btn-primary" value="获取短信验证码"/>
+										<script type="text/javascript">
+											$(function () {
+												$("#btnGetMobileVerifyCode").click(function() {
+													$("#mobileErrorMsgDiv").text("");
+													$("#profileUpdateMobileMsgDiv").text("");
+													$("#newMobileErrorMsg").text("");
+													if(!checkNewMobileValid($("#newMobile").val(), $("#plainMobile").val())){
+														$("#newMobileErrorMsg").text("请填写正确的新手机号码，请注意不能与旧手机号码相同");
+														return false;
+													}
+													var selfObj = this;
+													layer.open({
+														title: "提示信息",
+														icon: 3,
+														btn: ["确定", "取消"],
+														area: ['250x', '250x'],
+														content: "系统将发送短信验证码到这个号码 " + $("#newMobile").val(),
+														btn1: function () {
+															$("#mobileVerifyCode").val("");
+															layer.closeAll();
+															$("#returnMsgForMobileVerifyCode").hide();
+															$("#returnMsgForMobileVerifyCode").text("");
+															$("#emailVerifyCode_v").val($("#emailVerifyCode").val());
+															$("#newMobile_v").val($("#newMobile").val());
+															//$("#oldMobile_v").val($("#plainMobile").val());
+															setTimeCountdown(selfObj, $("#btnGetMobileVerifyCode").val(), "秒后重新发送", 120);
+															$.ajax({
+																type: 'POST',
+																headers: {
+																	'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+																},
+																dataType: 'json',
+																url: "/sendMobileVerifyCodeForUpdateMobile",
+																data: $("#frmMobileVerifyCodeForUpdateMobile").serialize(),
+																success: function (data) {
+																	if (data.status == true) {
+																		$("#returnMsgForMobileVerifyCode").text("系统已经向您的新手机号码发送验证码，请查收。");
+																		$("#returnMsgForMobileVerifyCode").attr("class", "alert alert-info");
+																	}else{
+																		$("#returnMsgForMobileVerifyCode").text(data.errorMessage);
+																		$("#returnMsgForMobileVerifyCode").attr("class", "alert alert-error");
+																	}
+																	$("#returnMsgForMobileVerifyCode").show();
+																}
+															});
+														},
+														btn2: function () {
+															layer.closeAll();
+														}
+													});
+												});
+											});
+										</script>
+										<span class="errtext">
+											<span id="mobileVerifyCodeErrorMsg" class="showElementError" style="padding-left: 10px;"></span>
+										</span>
+									</div>
+								</div>
+								<div class="control-group">
+									<div class="controls">
+										<input type="submit" id="btnProfileUpdateMobile" class="btn btn-primary" value="提交"/>&nbsp;
+									</div>
+								</div>
+							</div>
+						<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form></div>
+				</div>
+
+				<div class="tab-pane fade" id="updateEmailSection">
+					<form id="frmEmailVerifyCodeForUpdateEmail" action="/myHome/55322759/showSecurityInfo" method="post"><input type="hidden" name="_ajax" value="true" >
+						<input type="hidden" name="neeaId" value="55322759" >
+						<input type="hidden" name="emailType" value="35719D8414514841942ACD0D3C692C5B">
+					<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form><form id="emailForm" class="form-horizontal" action="/myHome/55322759/showSecurityInfo" method="post"><input id="neeaId" name="neeaId" type="hidden" value="55322759"/><input id="plainEmailAddress" name="plainEmailAddress" type="hidden" value="956949353@qq.com"/><input id="confuseEmailAddress" name="confuseEmailAddress" type="hidden" value="3********2@qq.com"/><div class="control-group">
+							<div id="returnMsgForVerifyCode" class="alert alert-info" style="display:none;"></div>
+							<label class="control-label">当前电子邮箱</label>
+							<div class="controls contr_c">
+								<div>3********2@qq.com</div>
+								<br/>如注册邮箱/手机号码有误或无法使用，请您点击 <a href="javascript:void(0);" onclick="showOnlineService('','Profile_UpdateMobileEmail','showSecurityInfo');">这里</a> 在线提交重置邮箱/手机号码申请或查看申请状态。
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">新电子邮箱</label>
+							<div class="controls contr_c">
+								<input id="newEmailAddress" name="newEmailAddress" style="ime-mode:disabled" class="inputStyle" type="text" value="" maxlength="70"/><span class="errtext">
+									<span id="newEmailAddressErrorMsg" class="showElementError" style="padding-left: 10px;"></span>
+								</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">邮件验证码</label>
+							<div class="controls contr_c">
+								<input id="verifyCode" name="verifyCode" style="ime-mode:disabled" class="inputStyle" type="text" value="" maxlength="4"/>&nbsp;&nbsp;<input type="button" id="btnGetVerifyCode" class="btn btn-primary" value="获取邮件验证码"/>
+								<script type="text/javascript">
+									$(function(){
+										$("#btnGetVerifyCode").click(function () {
+											$("#newEmailAddressErrorMsg").text("");
+											if('' == '修改电子邮箱错误次数过多，请不要再次操作'){
+												return false;
+											}
+											if(!checkNewEmailValid($("#newEmailAddress").val(), $("#plainEmailAddress").val())){
+												$("#newEmailAddressErrorMsg").text("请填写正确的新电子邮箱，请注意不能与旧电子邮箱相同");
+												return false;
+											}
+											$("#emailErrorMsgDiv").text("");
+											$("#profileUpdateEmailMsgDiv").text("");
+											$("#verifyCode").val("");
+											var selfObj = this;
+											$.ajax({
+												type : 'POST',
+												headers: {
+													'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+												},
+												dataType : 'json',
+												url : "../../sendEmailVerifyCodeForUpdateEmail",
+												data : $("#frmEmailVerifyCodeForUpdateEmail").serialize(),
+												success : function(data) {
+													$("#returnMsgForVerifyCode").text(data[0]);
+													if(data[0] == "系统已经向您的当前电子邮箱发送验证码，请查收"){
+														$("#returnMsgForVerifyCode").attr("class", "alert alert-info");
+													}else{
+														$("#returnMsgForVerifyCode").attr("class", "alert alert-error");
+													}
+													setTimeCountdown(selfObj, $("#btnGetVerifyCode").val(), "秒后重新发送", 60);
+													$("#returnMsgForVerifyCode").show();
+												}
+											});
+										});
+
+										$("#btnValidationEmail_emailForm").click(
+											function() {
+												$("#btnValidationEmail_emailForm").attr("disabled", true);
+												sendValidationEmail('cn','55322759');
+											});
+									});
+								</script>
+								<span class="errtext">
+									<span id="verifyCodeErrorMsg" class="showElementError" style="padding-left: 10px;"></span>
+								</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<input type="submit" id="btnProfileUpdateEmail" class="btn btn-primary" value="提交"/>
+								<input type="button" value="返回" onclick="javascript:changePage('#!/homepage',true);" class="btn" style="margin-left: 1em;"/>
+							</div>
+						</div>
+					<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form></div>
+				<div class="tab-pane fade" id="updatePasswordSection">
+					<div class="alert alert-block">
+						<p style="text-indent: 2em;">密码修改后，请妥善保管您的新密码。</p>
+						<p style="text-indent: 2em;">
+							密码长度<strong>至少8位，最多20位</strong>。为了增强密码安全性，密码中<strong>必须包含以下四种字符中的至少三种</strong>：
+						</p>
+						<ul style="margin-left: 4em">
+							<li>大写英文字母(A 到 Z)</li>
+							<li>小写英文字母(a 到 z)</li>
+							<li>数字 (0 到 9)</li>
+							<li>英文符号 (如：!, $, #, %)</li>
+						</ul>
+					</div>
+					<div>
+						<form id="passwdForm" class="form-horizontal" action="/myHome/55322759/showSecurityInfo" method="post"><div class="control-group">
+								<label class="control-label ">旧密码</label>
+								<div class="controls contr_c">
+									<input id="curPasswd" name="curPasswd" title="请输入旧密码" style="ime-mode:disabled" class="inputStyle" type="password" value="" maxlength="20"/><div class="errtext">
+										<span id="curPasswdErrorMsg" class="showElementError"></span>
+									</div>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label ">新密码</label>
+								<div class="controls contr_c">
+									<input id="newPasswd" name="newPasswd" title="请输入新密码" style="ime-mode:disabled; display:inline-block;margin-top:-20px;" class="inputStyle" type="password" value="" maxlength="20"/><div id="passwordStrength" style="display: inline-block; margin-left: 50px;"></div>
+									<div class="errtext">
+										<span id="newPasswdErrorMsg" class="showElementError"></span>
+									</div>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label ">确认新密码</label>
+								<div class="controls contr_c">
+									<input id="reNewPasswd" name="reNewPasswd" title="请输入确认新密码" style="ime-mode:disabled" class="inputStyle" type="password" value="" maxlength="20"/><div class="errtext">
+										<span id="reNewPasswdErrorMsg" class="showElementError"></span>
+									</div>
+								</div>
+							</div>
+							<div class="control-group">
+								<div id="divCheckImageUpdatePassword" style="padding-left: 13em;">
+									<img name='chkImgUpdatePassword' id="chkImgUpdatePassword" border='1' height="30"
+										 title="看不清？点击图片换一张" style="cursor: pointer" /> <span
+										id='changeMsgUpdatePassword' style="font-size: 13px; color: #aaa;">看不清？点击图片换一张</span>
+								</div>
+								<div style="clear: both"></div>
+								<label class="control-label">验证码</label>
+								<div class="controls contr_c">
+									<input id="securityCodeUpdatePassword" name="securityCodeUpdatePassword" title="请输入验证码" style="ime-mode:disabled" class="inputStyle" type="text" value="" maxlength="4"/><span class="help-inline">点击输入框查看验证码</span>
+									<div class="errtext">
+										<span id="securityCodeUpdatePasswordErrorMsg" class="showElementError"></span>
+									</div>
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls contr_c">
+									<input type="submit" id="btn_passwd" value="确认提交" class="btn btn-primary" />
+									<input type="button" value="返回" onclick="javascript:changePage('#!/homepage',true);" class="btn" style="margin-left: 1em;"/>
+								</div>
+							</div>
+							<input type="hidden" name="curPasswdEncrypt" id="curPasswdEncrypt" value="" />
+							<input type="hidden" name="newPasswdEncrypt" id="newPasswdEncrypt" value="" />
+							<input type="hidden" name="reNewPasswdEncrypt" id="reNewPasswdEncrypt" value="" />
+						<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		$(function() {
+			$("html,body").animate({
+				scrollTop : 0
+			}, 500);
+
+			initCheckImageUpdatePassword('CN');
+			showTipMsg();
+
+			var mobileFormValidateOptions = {
+				rules : {
+					newMobile : {
+						required : true,
+						isSBCcase : true,
+						checkDigit : true,
+						minlength : 11,
+						maxlength : 11,
+						checkSameMobileWithOld : true
+					},
+					mobileVerifyCode : {
+						required : true,
+						isSBCcase : true,
+						minlength : 6,
+						maxlength : 6,
+						checkDigitLetter : true
+					}
+				},
+				messages : {
+					newMobile : {
+						required : "请输入新手机号码",
+						isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+						checkDigit : "新手机号码请输入数字",
+						minlength : "新手机号码输入不正确",
+						maxlength : "新手机号码输入不正确",
+						checkSameMobileWithOld: "新手机号码不正确，请注意不要与旧手机号码相同"
+					},
+					mobileVerifyCode : {
+						required : "短信验证码不能为空",
+						isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+						minlength : "请填写正确的短信验证码",
+						maxlength : "请填写正确的短信验证码",
+						checkDigitLetter : "请填写正确的短信验证码"
+					}
+				},
+				errorPlacement : function(error, element) {
+					appendErrorMsg(element.attr("id"), error.text());
+				},
+				success : function(error) {
+					$("#" + error.attr("for") + "ErrorMsg").empty();
+				},
+				submitHandler : function(form) {
+					showMsgAsk("提示信息", "cn", "您确定更改手机号码吗？",
+						function () {
+							updateMobile();
+						});
+				}
+			};
+			$("#mobileForm").validate(mobileFormValidateOptions);
+
+			var emailFormValidateOptions = {
+				rules : {
+					newEmailAddress : {
+						required : true,
+						isSBCcase : true,
+						email : true,
+						maxlength : 70,
+						checkSameEmailWithOld : true
+					},
+					verifyCode : {
+						required : true,
+						isSBCcase : true,
+						checkDigitLetter: true,
+						minlength : 4,
+						maxlength : 4
+					}
+				},
+				messages : {
+					newEmailAddress : {
+						required : "请输入新电子邮箱",
+						isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+						email : "请输入真实有效的新电子邮箱",
+						maxlength : "请输入真实有效的新电子邮箱",
+						checkSameEmailWithOld : "请不要与当前电子邮箱相同"
+					},
+					verifyCode : {
+						required : "验证码不能为空",
+						isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+						checkDigitLetter : "请正确输入验证码",
+						minlength : "请正确输入验证码",
+						maxlength : "请正确输入验证码"
+					}
+				},
+				errorPlacement : function(error, element) {
+					appendErrorMsg(element.attr("id"), error.text());
+				},
+				success : function(error) {
+					$("#" + error.attr("for") + "ErrorMsg").empty();
+				},
+				submitHandler : function(form) {
+					if('' != '修改电子邮箱错误次数过多，请不要再次操作'){
+						showMsgAsk("提示信息", "cn", "您确定更改电子邮箱吗？",
+							function () {
+								updateEmail();
+							});
+					}
+				}
+			};
+			$("#emailForm").validate(emailFormValidateOptions);
+
+			var passwordFormValidateOptions = {
+				rules : {
+					curPasswd : {
+						required : true
+					},
+					newPasswd : {
+						required : true,
+						isSBCcase : true,
+						minlength : 8,
+						maxlength : 20,
+						checkPassword : true,
+						checkPasswordLevel : true
+					},
+					reNewPasswd : {
+						required : true,
+						isSBCcase : true,
+						equalTo : '#newPasswd'
+					},
+					securityCodeUpdatePassword : {
+						required : true,
+						isSBCcase : true,
+						minlength : 4,
+						maxlength : 4
+					}
+				},
+				messages : {
+					curPasswd : {
+						required : "请输入旧密码"
+					},
+					newPasswd : {
+						required : "请输入新密码",
+						isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+						minlength : "新密码至少为8位",
+						maxlength : "新密码长度不能超过20位",
+						checkPassword : "密码中请不要含有空格",
+						checkPasswordLevel : "登录密码不符合要求"
+					},
+					reNewPasswd : {
+						required : "请输入确认新密码",
+						isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+						equalTo : "新密码与确认新密码不符"
+					},
+					securityCodeUpdatePassword : {
+						required : "验证码不能为空",
+						isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+						minlength : "请正确输入验证码",
+						maxlength : "请正确输入验证码"
+					}
+				},
+				errorPlacement : function(error, element) {
+					appendErrorMsg(element.attr("id"), error.text());
+				},
+				success : function(error) {
+					$("#" + error.attr("for") + "ErrorMsg").empty();
+				},
+				submitHandler : function(form) {
+					showMsgAsk("提示信息", "cn", "您确定更改密码吗？",
+							function () {
+								updatePasswd();
+							});
+				}
+			};
+			$("#passwdForm").validate(passwordFormValidateOptions);
+			$('#newPasswd').passwordStrength($('#passwordStrength'), 'zh');
+		});
+
+		function getCheckImageSecurity(init, lang, id) {
+			if (!init)
+				setChangeChkImgMsgSecurity(true, lang, id);
+			var url = app_url + "checkImage";
+
+			$.getJSON(url, null, function(responseJSON) {
+				if (responseJSON == null) {
+					originalRequest.request.options.onFailure();
+					return;
+				}
+
+				var img = new Image();
+				img.onerror = function() {
+					setChangeChkImgMsgSecurity(false, lang, id);
+				};
+
+				img.src = responseJSON.chkImgFilename;
+
+				if ($.browser.msie) {
+					img.onreadystatechange = function() {
+						if (img.readyState == "complete") {
+							$("#chkImg"+id).attr("src", responseJSON.chkImgFilename);
+							if (!init) {
+								setChangeChkImgMsgSecurity(true, lang, id);
+							}
+							img = null;
+						}
+					};
+				} else {
+					img.onload = function() {
+						if (img.complete == true) {
+							$("#chkImg"+id).attr("src", responseJSON.chkImgFilename);
+							if (!init) {
+								setChangeChkImgMsgSecurity(true, lang, id);
+							}
+							img = null;
+						}
+					};
+				}
+			});
+		}
+
+		function setChangeChkImgMsgSecurity(flag, lang, id) {
+			if (flag) {
+				if (lang == 'CN') {
+					$("#changeMsg"+id).html("看不清？点击图片换一张");
+				} else {
+					$("#changeMsg"+id).html("Click picture to change one");
+				}
+			} else {
+				var showLink;
+				if (lang == 'CN') {
+					showLink = "<a href='javascript:void(0)' onclick=\"getCheckImageSecurity(false,'CN','" + id + "');\">"
+							+ "请点击刷新" + "</a>";
+				} else {
+					showLink = "<a href='javascript:void(0)' onclick=\"getCheckImageSecurity(false,'GB','" + id + "');\">"
+							+ "Please click the refresh" + "</a>";
+				}
+
+				$("#changeMsg"+id).html(showLink);
+				$("#chkImg"+id).attr("src", '');
+			}
+		}
+
+		function initCheckImageUpdatePassword(lang) {
+			$("#divCheckImageUpdatePassword").hide();
+			$("#securityCodeUpdatePassword").val('');
+			$("#securityCodeUpdatePassword").focus(function() {
+				if ($("#divCheckImageUpdatePassword").is(":hidden")) {
+					$("#divCheckImageUpdatePassword").show();
+					getCheckImageSecurity(false, lang, "UpdatePassword");
+					$("#securityCodeUpdatePassword").unbind("click");
+				}
+			});
+			$("#chkImgUpdatePassword").click(function() {
+				getCheckImageSecurity(false, lang, "UpdatePassword");
+			});
+		}
+
+		function updateMobile() {
+			$('#btnProfileUpdateMobile').attr("disabled", true);
+			$.ajax({
+				type : "POST",
+				headers: {
+					'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+				},
+				url : "updateMobile",
+				data : $("#mobileForm").serialize(),
+				success : function(msg) {
+					$('#btnProfileUpdateMobile').attr("disabled", false);
+					$("#main-content").html(msg);
+					$("#emailVerifyCodeDiv").hide();
+					$("#restDiv").show();
+					$('#myTab li:eq(0) a').tab('show');
+				}
+			});
+			return false;
+		}
+
+		function updateEmail() {
+			$('#btnProfileUpdateEmail').attr("disabled", true);
+			$.ajax({
+				type : "POST",
+				headers: {
+					'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+				},
+				url : "updateEmail",
+				data : $("#emailForm").serialize(),
+				success : function(msg) {
+					$("#main-content").html(msg);
+					$('#myTab li:eq(1) a').tab('show');
+				}
+			});
+			return false;
+		}
+
+		function updatePasswd() {
+			$('#curPasswdEncrypt').val($.base64.encode($('#curPasswd').val()));
+			$('#newPasswdEncrypt').val($.base64.encode($('#newPasswd').val()));
+			$('#reNewPasswdEncrypt').val($.base64.encode($('#reNewPasswd').val()));
+			$('#btn_passwd').attr("disabled", true);
+			$.ajax({
+				type : "POST",
+				headers: {
+					'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+				},
+				url : "updatePasswd",
+				data : $("#passwdForm").serialize(),
+				success : function(msg) {
+					$("#main-content").html(msg);
+					$('#myTab li:eq(2) a').tab('show');
+				}
+			});
+			return false;
+		}
+
+		function showOnlineService(neeaAppId, taskCategoryTypeGroup, backUrl) {
+			$.ajax({
+				type : "GET",
+				url : 'showOnlineService',
+				data : {
+					"neeaAppId" : neeaAppId,
+					"taskCategoryTypeGroup" : taskCategoryTypeGroup,
+					"backUrl" : backUrl
+				},
+				success : function(msg) {
+					$("#main-content").html(msg);
+					$(window).scrollTop(0);
+				}
+			});
+		}
+	</script>
+</body>
+</html>
