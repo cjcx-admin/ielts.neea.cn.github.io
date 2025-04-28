@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="_csrf" content="9228345e-e482-44b2-8e72-4f8ddee66a1c"/>
+	<title>雅思网上报名 - 教育部教育考试院</title>
+	<!-- Google Tag Manager -->
+<script>
+    dataLayer = [];
+</script>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5DC5JZ');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DC5JZ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="container">
+	<div class="main-content-style">
+		<fieldset>
+			<legend><h2>如何退回账户余额</h2></legend>
+		</fieldset>
+		<div class="alert alert-block">
+			<p style="text-indent: 2em;">温馨提示：如您还有需要退考但未完成退考的考试，请务必于报名截止日期前在“查看已注册考试”页面完成退考。完成退考后，您的考试费用会自动返回到您的NEEA账户。如您现在只需要申请退还您NEEA账户的当前余额，请直接点击<a href="javascript:changePage('#!/showRefundInfo',true);">“申请退回账户余额”</a>。您的NEEA账户余额可以选择申请退款，也可以补足差额用作继续报考或申请其它服务项目，NEEA账户将为您永久保存余额。</p>
+			<p style="text-indent: 2em;">退款方式有两种：退回原支付订单所对应银行卡 或 通过银行转账。</p>
+			<p style="text-indent: 2em;">退款处理时限为4至6周。</p>
+		</div>
+		<fieldset>
+			<legend style="font-size:22px"><strong>申请退款</strong></legend>
+		</fieldset>
+		<div style="border-radius: 0px; width: 99%; border: 0px solid #dee9d7;">
+			<div id="hiddenSection">
+				<input type="hidden" value="0" name="balance" id="balance" />
+			</div>
+			<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a href="#refundAppSection" data-toggle="tab" onfocus="this.blur()">退款</a></li>
+				<li><a href="#refundRecSection" data-toggle="tab" onfocus="this.blur()">查看退款申请记录</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="refundAppSection">
+					<div id="hiddenrefundAppSection">
+						<input type="hidden" value="" name="code" id="code" />
+					</div>
+					<p>
+							<strong>您的余额为0。</strong>
+						</p>
+					</div>
+				<div class="tab-pane fade" id="refundRecSection">
+					<p >
+							<strong>您没有退款记录。</strong>
+						</p>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+<form id="frmMobileVerifyCode" action="/myHome/55322759/showRefundInfo" method="post"><input type="hidden" name="_ajax" value="true">
+	<input type="hidden" name="neeaId" value="55322759">
+	<input type="hidden" name="mobileType" value="5F69E1CF2F0042BD871E66E1F062372D">
+	<input type="hidden" name="currentMobile" value="18054035947">
+<div>
+<input type="hidden" name="_csrf" value="9228345e-e482-44b2-8e72-4f8ddee66a1c" />
+</div></form><script type="text/javascript" src="https://ielts.neea.cn/project/ielts/v2/js/PCC.min.js"></script>
+<script type="text/javascript" src="https://ielts.neea.cn/project/ielts/v2/js/profileCN.min.js"></script>
+<script type="text/javascript" src="https://ielts.neea.cn/project/ielts/v2/js/bankCardInfo.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("html,body").animate({
+			scrollTop : 0
+		}, 500);
+
+		getBankUniteCode();
+		var canRefundUnself = false;
+		bankNameBuild('accountBank', 'cn');
+		setElementSelected('accountBank', "");
+		//PPCCascade('postProvince', 'postCity', '', 'cn');
+		//setElementSelected('postProvince', "");
+		//changeCity('postProvince', 'postCity', 'cn');
+		//setElementSelected('postCity', "");
+
+		bankNameBuild('reapplyAccountBank','cn');
+		setElementSelected('reapplyAccountBank', "");
+		//PPCCascade('reapplyPostProvince', 'reapplyPostCity', '', 'cn');
+		//setElementSelected('reapplyPostProvince', "");
+		//changeCity('reapplyPostProvince', 'reapplyPostCity', 'cn');
+		//setElementSelected('reapplyPostCity', "");
+
+		$("#btnSendMobileVerifyCodeByCancel").click(function () {
+			sendMobileVerifyCode(this, $("#returnMsgForMobileVerifyCodeByCancel"));
+		});
+		$("#btnSendMobileVerifyCodeByCard").click(function () {
+			sendMobileVerifyCode(this, $("#returnMsgForMobileVerifyCodeByCard"));
+		});
+		$("#btnSendMobileVerifyCodeByBank").click(function () {
+			sendMobileVerifyCode(this, $("#returnMsgForMobileVerifyCodeByBank"));
+		});
+		$("#btnSendMobileVerifyCodeByReapply").click(function () {
+			sendMobileVerifyCode(this, $("#returnMsgForMobileVerifyCodeByReapply"));
+		});
+
+		$("#btnShowTip").click(function() {
+			layer.open({
+				title: "提示信息",
+				btn: ["关闭"],
+				icon: 3,
+				content: "银行转账退款开户人须为考生本人。如开户人姓名与您在报名网站注册的考生姓名不完全一致，请不要“提交退款信息”，尽快与我们联系。电话：010 - 82345671，Email：ielts@mail.neea.edu.cn。",
+				btn1: function () {
+					layer.closeAll();
+				}
+			});
+		});
+
+		$("#accountBank").change(function() {
+		    $("#accountBankErrorMsg").text('');
+			$("#accountBankOtherErrorMsg").text('');
+			$("#bankUniteCodeOtherErrorMsg").text('');
+			$("#accountBankOther").val('');
+			$("#bankUniteCodeOther").val('');
+			if ($("#accountBank").val()=="其他") {
+				$("#accountBankOtherSpan").show();
+			}else{
+				$("#accountBankOtherSpan").hide();
+			}
+		});
+
+		if(''=="其他"){
+			$("#accountBankOtherSpan").show();
+		}else{
+			$("#accountBankOtherSpan").hide();
+		}
+
+		$("#reapplyAccountBank").change(function() {
+		    $("#reapplyAccountBankErrorMsg").text('');
+			$("#reapplyAccountBankOtherErrorMsg").text('');
+			$("#reapplyBankUniteCodeOtherErrorMsg").text('');
+			$("#reapplyAccountBankOther").val('');
+			$("#reapplyBankUniteCodeOther").val('');
+			if ($("#reapplyAccountBank").val()=="其他") {
+				$("#reapplyAccountBankOtherSpan").show();
+			}else{
+				$("#reapplyAccountBankOtherSpan").hide();
+			}
+		});
+		fillCardRemittee();
+
+		//反显。
+		if ($('input[name="unselfCheckbox"]').is(':checked') == false) {
+			fillCardRemittee();
+			$("#idType").val("");
+			$("#idNo").val("");
+			$("#cardremittee").attr("readonly", "readonly");
+			$("#idTypeDiv").hide();
+			$("#idNoDiv").hide();
+		} else {
+			$("#cardremittee").removeAttr("readOnly");
+			$("#idTypeDiv").show();
+			$("#idNoDiv").show();
+		}
+
+		if ($('input[name="reapplyUnselfCheckbox"]').is(':checked') == false) {
+			fillCardRemittee();
+			$("#reapplyIdType").val("");
+			$("#reapplyIdNo").val("");
+			$("#reapplyCardremittee").attr("readonly", "readonly");
+			$("#reapplyIdTypeDiv").hide();
+			$("#reapplyIdNoDiv").hide();
+		} else {
+			$("#reapplyCardremittee").removeAttr("readOnly");
+			$("#reapplyIdTypeDiv").show();
+			$("#reapplyIdNoDiv").show();
+		}
+
+
+		setElementSelected('idType', "");
+
+
+		$('input[name="unselfCheckbox"]').on('change', function() {
+			if ($('input[name="unselfCheckbox"]').is(':checked') == false) {
+				fillCardRemittee();
+				$("#idType").val("");
+				$("#idNo").val("");
+				$("#cardremittee").attr("readonly", "readonly");
+				$("#idTypeDiv").hide();
+				$("#idNoDiv").hide();
+			} else {
+				$("#cardremittee").val("");
+				$("#idType").val("");
+				$("#idNo").val("");
+				$("#cardremittee").removeAttr("readOnly");
+				$("#idTypeDiv").show();
+				$("#idNoDiv").show();
+			}
+		});
+
+
+		$('input[name="reapplyUnselfCheckbox"]').on('change', function() {
+			if ($('input[name="reapplyUnselfCheckbox"]').is(':checked') == false) {
+				fillCardRemittee();
+				$("#reapplyIdType").val("");
+				$("#reapplyIdNo").val("");
+				$("#reapplyCardremittee").attr("readonly", "readonly");
+				$("#reapplyIdTypeDiv").hide();
+				$("#reapplyIdNoDiv").hide();
+			} else {
+				$("#reapplyCardremittee").val("");
+				$("#reapplyIdType").val("");
+				$("#reapplyIdNo").val("");
+				$("#reapplyCardremittee").removeAttr("readOnly");
+				$("#reapplyIdTypeDiv").show();
+				$("#reapplyIdNoDiv").show();
+			}
+		});
+
+		if(''=="其他"){
+			$("#reapplyAccountBankOtherSpan").show();
+		}else{
+			$("#reapplyAccountBankOtherSpan").hide();
+		}
+
+		function fillCardRemittee(){
+			let bankRemitteeName = getRemitteeName('' , $('input[name="unselfCheckbox"]').is(':checked'))
+			let reapplyRemitteeName = getRemitteeName('',$('input[name="reapplyUnselfCheckbox"]').is(':checked'));
+			$("#cardremittee").val(bankRemitteeName);
+			$("#reapplyCardremittee").val(reapplyRemitteeName);
+		}
+
+		function getRemitteeName(remittemName,isCheckCanUnself) {
+			//如果是选中非本人
+			if (remittemName && isCheckCanUnself) {
+				return remittemName;
+			}else {
+				var lastName = 'CHEN';
+				var firstName = 'LUYAO';
+				var xing = '陈';
+				var ming = '路瑶';
+
+				if (xing == '' && ming == '') {
+					return (firstName == '-') ? lastName : (lastName + ' ' + firstName);
+				} else {
+					return xing + ming;
+				}
+			}
+		}
+
+
+		showTipMsg();
+
+		$('.refundAmountField').each(function() {
+			var fee = $(this).text();
+			$(this).text(fee);
+			$(this).formatCurrency({
+				region : 'zh-CN'
+			});
+		});
+		$('.moneyFormatField').each(function() {
+			var fee = $(this).text();
+			$(this).text(fee);
+			$(this).formatCurrency({
+				region : 'zh-CN'
+			});
+		});
+
+		formatCurrencyVal('balanceField1', '0');
+		formatCurrency('balanceField2', '0');
+		formatCurrency('remainBalanceField',
+				'0');
+
+		$("#cardId").keyup(
+				function() {
+					$("#cardId").val(
+							$("#cardId").val().replace(/\s/g, '').replace(
+									/(\d{4})(?=\d)/g, "$1 "));
+				});
+
+		$("#reapplyCardId").keyup(
+				function() {
+					$("#reapplyCardId").val(
+							$("#reapplyCardId").val().replace(/\s/g, '').replace(
+									/(\d{4})(?=\d)/g, "$1 "));
+				});
+
+		if ($.isEmptyObject($("#balance").val()) || $("#balance").val() == '0') {
+			$('#myTab a:last').tab('show');
+		} else {
+			$('#myTab a:first').tab('show');
+		}
+
+		var cachMoneyBankFormValidateOptions = {
+			rules : {
+				cardremittee:{
+					required: true,
+					maxlength:32
+				},
+				cardId : {
+					required : true,
+					isSBCcase : true,
+					//checkSpace : true,
+					checkCardIdDigit : true,
+					maxlength : 32
+				},
+				/*
+				postProvince : {
+					required : true
+				},
+				postCity : {
+					required : true
+				},*/
+				accountBank : {
+					required : true
+				},
+				accountBankOther : {
+					checkRefundBankOther : true,
+					isSBCcase : true,
+					isChinese : true,
+					maxlength : 64,
+					checkRefundBankContent : true
+				},
+				bankUniteCodeOther : {
+				    checkRefundBankUniteCodeOther : true,
+					minlength : 12,
+					maxlength : 12,
+					checkDigit : true
+				},
+				cardtel : {
+					required : true,
+					isSBCcase : true,
+					checkDigit : true,
+					minlength : 11,
+					maxlength : 11
+				},
+				mobileVerifyCodeByBank : {
+					required : true,
+					isSBCcase : true,
+					minlength : 6,
+					maxlength : 6,
+					checkDigitLetter : true
+				}
+			},
+			messages : {
+				cardremittee:{
+					required: "开户人姓名不能为空",
+					maxlength:"开户人姓名长度不能超过32个字符"
+				},
+				cardId : {
+					required : "银行卡号不能为空",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					//checkSpace : "不能输入空格",
+					checkCardIdDigit : "银行卡号请输入数字",
+					maxlength : "银行卡号的长度不能超过32个字符"
+				},
+				/*
+				postProvince : {
+					required : "省份不能为空"
+				},
+				postCity : {
+					required : "城市不能为空"
+				},*/
+				accountBank : {
+					required : "请选择开户银行"
+				},
+				accountBankOther : {
+					checkRefundBankOther : "请输入开户银行",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					isChinese : "开户银行请输入中文",
+					maxlength : "开户银行的长度不能超过64个字符",
+					checkRefundBankContent : "请注意：银行名称 中，您仅需输入银行名称。例如：中国银行，仅输入“中国”"
+				},
+				bankUniteCodeOther : {
+				    checkRefundBankUniteCodeOther : "请输入开户银行的联行号",
+					minlength : "开户银行联行号应为12位数字",
+					maxlength : "开户银行联行号应为12位数字",
+					checkDigit : "开户银行联行号应为12位数字"
+				},
+				cardtel : {
+					required : "联系电话不能为空",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					checkDigit : "手机号码请输入数字",
+					minlength : "手机号码输入不正确",
+					maxlength : "手机号码输入不正确"
+				},
+				mobileVerifyCodeByBank : {
+					required : "短信验证码不能为空",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					minlength : "请填写正确的短信验证码",
+					maxlength : "请填写正确的短信验证码",
+					checkDigitLetter : "请填写正确的短信验证码"
+				}
+			},
+			errorPlacement : function(error, element) {
+				appendErrorMsg(element.attr("id"), error.text());
+			},
+			success : function(error) {
+				$("#" + error.attr("for") + "ErrorMsg").empty();
+			},
+			submitHandler : function(form) {
+				var dialogContent = "<div style='padding-left: 2em;'><p><b>您当前账户余额为</b>：" + $('#balanceField1').val() + "</p>";
+				dialogContent += "<p>开户人姓名(中文)："+ $('#cardremittee').val() +"</p>";
+				dialogContent += "<p>银行卡号："+ $('#cardId').val() +"</p>";
+				//dialogContent += "<p>开户银行："+ buildAccountBank($("#postProvince").find("option:selected").text(),$("#postCity").find("option:selected").text(),$("#accountBank").find("option:selected").text(),$("#accountBankOther").val())+"</p>";
+				dialogContent += "<p>开户银行："+ buildAccountBank($("#accountBank").find("option:selected").text(),$("#accountBankOther").val())+"</p>";
+				dialogContent += "<p>联系电话："+ $('#cardtel').val() +"</p>";
+				dialogContent += "<p>请务必确保您以上填写信息的真实、准确，开户人为考生本人。否则，退款可能失败。</p>";
+				dialogContent += "<p>特别提示：请您谨慎选择退款方式，一旦提交将无法取消或更改。</p>";
+				dialogContent += "<p>您完成提交后，账户余额将会被清零，您确认提交吗？</p>";
+				dialogContent += "<p><label class='checkbox' style='margin-right: 2em;'><input type='checkbox' id='agreement' name='agreement'/>我确认以上退款信息准确无误。</label></p></div>";
+
+				layer.open({
+					type: 1, //page层
+					area: ['450px', '400px'],
+					title: "提示信息",
+					btn: ["确定", "取消"],
+					closeBtn: 0,
+					icon: 3,
+					content: dialogContent,
+					btn1: function () {
+						if ($('#agreement').is(':checked') == false) {
+							layer.open({
+								title: "提示信息",
+								btn: "确定",
+								closeBtn: 0,
+								icon: 0,
+								content: "您必须确认以上退款信息准确无误",
+								btn1: function (index) {
+									layer.close(index);
+									$('#agreement').focus();
+								}
+							});
+							return;
+						}
+
+						layer.closeAll();
+						//$("#postProvinceText").val($("#postProvince").find("option:selected").text());
+						//$("#postCityText").val($("#postCity").find("option:selected").text());
+
+						$("#bankUniteCode").val("");
+						$.each(bankUniteCodeObj, function (i, obj) {
+							if($("#accountBank").val() == obj.bankName){
+								$("#bankUniteCode").val(obj.uniteCode);
+							}
+						});
+
+						$("#btn_cashMoneyBank").attr("disabled", true);
+						$.ajax({
+							type : "POST",
+							headers: {
+								'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+							},
+							url : "cashMoneyBank",
+							data : $("#cashMoneyBankForm").serialize(),
+							beforeSend: function () {
+								beginLoading()
+							},
+							complete: function () {
+								layer.closeAll();
+							},
+							success : function(msg) {
+								$("#main-content").html(msg);
+								var code = $("#code").val();
+								if (code == "CASH-OK") {
+									changePage('#!/showRefundInfo',true);
+								} else {
+									$("#cashType").val('bank');
+									$("input[name=cashType]:eq(1)").attr(
+											"checked", 'checked');
+									selCashType('bank');
+								}
+							}
+						});
+					},
+					btn2: function () {
+						layer.closeAll();
+					}
+				});
+			}
+		};
+
+		$("#cashMoneyBankForm").validate(cachMoneyBankFormValidateOptions);
+
+        if (canRefundUnself && $('input[name="unselfCheckbox"]').val()) {
+			$("#idType").rules("add", {
+				checkRefundIdType:true
+			});
+            $("#idNo").rules("add", {
+                checkRefundIdNo:true
+            });
+		}
+		$("#btn_closeReapplyCashMoneyBank").click(function() {
+			$("#reapplyBankForm").hide();
+		});
+
+		var reapplyCachMoneyBankFormValidateOptions = {
+			rules : {
+				reapplyCardremittee:{
+					required: true,
+					maxlength:32
+				},
+				reapplyCardremitteeName : {
+					isSBCcase : true,
+					maxlength : 128
+				},
+				reapplyCardId : {
+					required : true,
+					isSBCcase : true,
+					//checkSpace : true,
+					checkCardIdDigit : true,
+					maxlength : 32
+				},
+				/*
+				reapplyPostProvince : {
+					required : true
+				},
+				reapplyPostCity : {
+					required : true
+				},*/
+				reapplyAccountBank : {
+					required : true
+				},
+				reapplyAccountBankOther : {
+					checkReapplyRefundBankOther : true,
+					isSBCcase : true,
+					isChinese : true,
+					maxlength : 64,
+					checkReapplyRefundBankContent : true
+				},
+				reapplyBankUniteCodeOther : {
+				    checkRefundBankUniteCodeOther : true,
+					minlength : 12,
+					maxlength : 12,
+					checkDigit : true
+				},
+				reapplyCardtel : {
+					required : true,
+					isSBCcase : true,
+					checkDigit : true,
+					minlength : 11,
+					maxlength : 11
+				},
+				mobileVerifyCodeByReapply : {
+					required : true,
+					isSBCcase : true,
+					minlength : 6,
+					maxlength : 6,
+					checkDigitLetter : true
+				}
+			},
+			messages : {
+				reapplyCardremittee:{
+					required: "开户人姓名不能为空",
+					maxlength:"开户人姓名长度不能超过32个字符"
+				},
+				reapplyCardremitteeName : {
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					maxlength : "备注的长度不能超过128个字符"
+				},
+				reapplyCardId : {
+					required : "银行卡号不能为空",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					//checkSpace : "不能输入空格",
+					checkCardIdDigit : "银行卡号请输入数字",
+					maxlength : "银行卡号的长度不能超过32个字符"
+				},
+				/*
+				reapplyPostProvince : {
+					required : "省份不能为空"
+				},
+				reapplyPostCity : {
+					required : "城市不能为空"
+				},*/
+				reapplyAccountBank : {
+					required : "开户银行不能为空"
+				},
+				reapplyAccountBankOther : {
+					checkReapplyRefundBankOther : "请输入开户银行",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					isChinese : "开户银行请输入中文",
+					maxlength : "开户银行的长度不能超过64个字符",
+					checkReapplyRefundBankContent : "请注意：银行名称 中，您仅需输入银行名称。例如：中国银行，仅输入“中国”"
+				},
+				reapplyBankUniteCodeOther : {
+				    checkRefundBankUniteCodeOther : "请输入开户银行的联行号",
+					minlength : "开户银行联行号应为12位数字",
+					maxlength : "开户银行联行号应为12位数字",
+					checkDigit : "开户银行联行号应为12位数字"
+				},
+				reapplyCardtel : {
+					required : "联系电话不能为空",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					checkDigit : "手机号码请输入数字",
+					minlength : "手机号码输入不正确",
+					maxlength : "手机号码输入不正确"
+				},
+				mobileVerifyCodeByReapply : {
+					required : "短信验证码不能为空",
+					isSBCcase : "不要输入全角字符,请把您的输入法换成半角模式",
+					minlength : "请填写正确的短信验证码",
+					maxlength : "请填写正确的短信验证码",
+					checkDigitLetter : "请填写正确的短信验证码"
+				}
+			},
+			errorPlacement : function(error, element) {
+				appendErrorMsg(element.attr("id"), error.text());
+			},
+			success : function(error) {
+				$("#" + error.attr("for") + "ErrorMsg").empty();
+			},
+			submitHandler : function(form) {
+				var dialogContent = "<div style='padding-left: 2em;'><p>提交退款申请后我们将重新为您进行退款，确定提交退款申请吗？</p>";
+				dialogContent += "<p>退款金额为："+ $('#reapplyAmount').val() + "</p>";
+				dialogContent += "<p>开户人姓名(中文)："+ $('#reapplyCardremittee').val() +"</p>";
+				dialogContent += "<p>银行卡号："+ $('#reapplyCardId').val() +"</p>";
+				//dialogContent += "<p>开户银行："+ buildAccountBank($("#reapplyPostProvince").find("option:selected").text(),$("#reapplyPostCity").find("option:selected").text(),$("#reapplyAccountBank").find("option:selected").text(),$("#reapplyAccountBankOther").val())+"</p>";
+				dialogContent += "<p>开户银行："+ buildAccountBank($("#reapplyAccountBank").find("option:selected").text(),$("#reapplyAccountBankOther").val())+"</p>";
+				dialogContent += "<p>联系电话："+ $('#reapplyCardtel').val() +"</p>";
+				dialogContent += "<p><label class='checkbox' style='margin-right: 2em;'><input type='checkbox' id='agreement' name='agreement'/>我确认以上退款信息准确无误。</label></p></div>";
+
+				layer.open({
+					type: 1, //page层
+					area: ['450px', '350px'],
+					title: "提示信息",
+					btn: ["确定", "取消"],
+					closeBtn: 0,
+					icon: 3,
+					content: dialogContent,
+					btn1: function () {
+						if ($('#agreement').is(':checked') == false) {
+							layer.open({
+								title: "提示信息",
+								btn: "确定",
+								closeBtn: 0,
+								icon: 0,
+								content: "您必须确认以上退款信息准确无误",
+								btn1: function (index) {
+									layer.close(index);
+									$('#agreement').focus();
+								}
+							});
+							return;
+						}
+
+						layer.closeAll();
+						//$("#reapplyPostProvinceText").val($("#reapplyPostProvince").find("option:selected").text());
+						//$("#reapplyPostCityText").val($("#reapplyPostCity").find("option:selected").text());
+
+						$("#reapplyBankUniteCode").val("");
+						$.each(bankUniteCodeObj, function (i, obj) {
+							if($("#reapplyAccountBank").val() == obj.bankName){
+								$("#reapplyBankUniteCode").val(obj.uniteCode);
+							}
+						});
+
+						$("#btn_reapplyCashMoneyBank").attr("disabled", true);
+						$.ajax({
+							type : "POST",
+							headers: {
+								'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+							},
+							url : "reapplyCashMoneyBank",
+							data : $("#reapplyCashMoneyBankForm").serialize(),
+							beforeSend: function () {
+								beginLoading()
+							},
+							complete: function () {
+								layer.closeAll();
+							},
+							success : function(msg) {
+								$("#main-content").html(msg);
+								var code = $("#code").val();
+								if (code == "CASH-OK") {
+									changePage('#!/showRefundInfo',true);
+								} else {
+									$('#myTab a:last').tab('show');
+									$("#reapplyBankForm").show();
+								}
+							}
+						});
+					},
+					btn2: function () {
+						layer.closeAll();
+					}
+				});
+			}
+		};
+		$("#reapplyCashMoneyBankForm").validate(reapplyCachMoneyBankFormValidateOptions);
+		if (canRefundUnself && $('input[name="reapplyUnselfCheckbox"]').val()) {
+			$("#reapplyIdType").rules("add", {
+				checkRefundIdType:true
+
+			});
+			$("#reapplyIdNo").rules("add", {
+				checkReapplyRefundIdNo:true
+
+			});
+		}
+	});
+
+	/*
+	function buildAccountBank(province, city, accountBank, accountBankOther) {
+		if (accountBank == "其他") {
+			if ("北京市" == province || "天津市" == province || "上海市" == province || "重庆市" == province) {
+				return accountBankOther + "银行" + province + "分行";
+			} else {
+				return accountBankOther + "银行" + province + city + "分行";
+			}
+		} else {
+			if ("北京市" == province || "天津市" == province || "上海市" == province || "重庆市" == province) {
+				return accountBank + province + "分行";
+			} else {
+				return accountBank + province + city + "分行";
+			}
+		}
+	}*/
+	//根据银行卡号，自动选择银行
+	$("#reapplyCardId").keyup(
+			function () {
+				var bankCardInfo = bankCardAttribution($("#reapplyCardId").val().replace(/\s+/g,""));
+				if(bankCardInfo != 'error'){
+					$("#reapplyAccountBank").val(bankCardInfo.bankName).trigger('change');
+				}else{
+					$("#reapplyAccountBank").val('').trigger('change');
+				}
+			});
+
+	$("#cardId").keyup(
+			function () {
+				var bankCardInfo = bankCardAttribution($("#cardId").val().replace(/\s+/g,""));
+				if(bankCardInfo != 'error'){
+					$("#accountBank").val(bankCardInfo.bankName).trigger('change');
+				}else{
+					$("#accountBank").val('').trigger('change');
+				}
+			});
+
+	function buildAccountBank(accountBank, accountBankOther) {
+		if (accountBank == "其他") {
+			return accountBankOther + "银行";
+		} else {
+			return accountBank;
+		}
+	}
+
+	function sendMobileVerifyCode(selfObj, element){
+		layer.open({
+			title: "提示信息",
+			icon: 3,
+			btn: ["确定", "取消"],
+			area: ['250x', '250x'],
+			content: "系统将发送短信验证码到这个号码 " + "130****5802",
+			btn1: function () {
+				layer.closeAll();
+				element.hide();
+				element.text("");
+				setTimeCountdown(selfObj, selfObj.value, "秒后重新发送", 120);
+				$.ajax({
+					type: 'POST',
+					headers: {
+						'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+					},
+					dataType: 'json',
+					url: "/sendMobileVerifyCodeForRefund",
+					data: $("#frmMobileVerifyCode").serialize(),
+					success: function (data) {
+						if (data.status == true) {
+							element.text("系统已经向您的手机号码发送验证码，请查收。");
+							element.attr("class", "alert alert-info");
+							element.show();
+						}else{
+							element.text(data.errorMessage);
+							element.attr("class", "alert alert-error");
+							element.show();
+						}
+					}
+				});
+			},
+			btn2: function () {
+				layer.closeAll();
+			}
+		});
+	}
+</script>
+</body>
+</html>
