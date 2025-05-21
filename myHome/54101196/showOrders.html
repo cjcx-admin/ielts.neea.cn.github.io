@@ -1,0 +1,118 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="_csrf" content="9228345e-e482-44b2-8e72-4f8ddee66a1c"/>
+	<title>雅思网上报名 - 教育部教育考试院</title>
+	<!-- Google Tag Manager -->
+<script>
+    dataLayer = [];
+</script>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5DC5JZ');</script>
+<!-- End Google Tag Manager -->
+<script type="text/javascript">
+		var refeshR2IUrlInterval = new Map();
+	</script>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DC5JZ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="container">
+	<div class="main-content-style">
+		<fieldset>
+			<legend><h2>查看已注册考试</h2></legend>
+		</fieldset>
+		<div class="alert alert-block">
+			<p style="text-indent: 2em;">您成功报名之后，将在此了解到考务安排的重要的信息（雅思考号，口试时间，口笔试安排等等）。此外，您可以进行下列操作：</p>
+			<ul style="margin-left: 4em">
+				<li>在报名截止日期之前更改雅思报名表上可更改的信息</li>
+				<li>在报名截止日期之前更改考试日期及/或考点（将额外收取420元人民币并取决于实际座位情况）</li>
+				<li>在报名截止日期之前取消报名（将扣除420元人民币）</li>
+				<li>在考试后查看分数</li>
+				<li>在考试后申请考后服务</li>
+			</ul>
+			<p style="text-indent: 2em;">请在参加考试前仔细阅读相关<a href="/notice_cn.html" target="_blank">考生须知</a>、<a
+					href="/declaration_cn.html" target="_blank">考生声明</a> 及考试当日流程
+				，了解考试相关重要信息。</p>
+		</div>
+		<div align="center" style="margin-bottom: 2em; margin-top: 2em; font-weight: bolder">
+				<p>没有报考记录</p>
+			</div>
+		</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		$("html,body").animate({
+			scrollTop : 0
+		}, 500);
+		$('.table img').tooltip({placement: 'bottom'});
+		$('.testFeeField').each(function() {
+			var fee = $(this).text();
+			$(this).text(fee);
+			$(this).formatCurrency({
+				region : 'zh-CN'
+			});
+		});
+	});
+	function clickToReadyPremium(e) {
+		e.preventDefault();
+		let readyPremiumUrl = e.currentTarget.href;
+		window.open(readyPremiumUrl.split('?')[0],'_blank')
+	}
+	function refreshR2IUrl(neeaAppId) {
+		$("#refreshR2IUrl_neeaAppId").val(neeaAppId);
+		$.ajax({
+			type : "POST",
+			headers: {
+				'X-CSRF-TOKEN': $("meta[name='_csrf']").attr("content")
+			},
+			url : 'getR2IUrl',
+			dataType : 'json',
+			data : $("#frmRefreshR2IUrl").serialize(),
+			success : function(data) {
+				if (data != null) {
+					$('#r2IUrl').attr('href', data);
+					$('#r2IUrlSpan1').hide();
+					$('#r2IUrlSpan2').show();
+					clearInterval(refeshR2IUrlInterval.get(neeaAppId));
+					refeshR2IUrlInterval.remove(neeaAppId);
+				}
+			}
+		});
+	}
+
+	function showOnlineService(neeaAppId, taskCategoryTypeGroup, backUrl){
+		$.ajax({
+			type : "GET",
+			url : 'showOnlineService',
+			data : {
+				"neeaAppId" : neeaAppId,
+				"taskCategoryTypeGroup" : taskCategoryTypeGroup,
+				"backUrl" : backUrl
+			},
+			success : function(msg) {
+				$("#main-content").html(msg);
+				$(window).scrollTop(0);
+			}
+		});
+	}
+</script>
+</body>
+</html>
